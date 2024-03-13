@@ -5,6 +5,8 @@ import './App.css';
 import Nav from './components/Nav/nav.jsx';
 import SubNav from './components/Submenu/subNav.jsx';
 import MobileMenu from './components/NavMobile/navMobile.jsx';
+import Footer from './components/Footer/footer.jsx';
+import AppRoutes from './Routes/Routes.js';
 
 const ToggleButton = styled.button`
     display: none;
@@ -35,13 +37,15 @@ function App() {
   };
 
   return (
-      <div classNaae="App">
+      <div className="App">
           <Nav />
           <SubNav />
           <ToggleButton onClick={toggleMenu}>
               {isMenuOpen ? '' : '☰'}
           </ToggleButton>
           <MobileMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          <AppRoutes />
+          <Footer/>
       </div>
   );
 }
