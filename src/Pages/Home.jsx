@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // Importe o CSS principal do Swiper
 
+// Certifique-se de remover qualquer referência ao SwiperCore
 
-const TextSlider = styled(Slider)`
+const TextSlider = styled(Swiper)`
   width: 80%;
   margin: 0 auto;
   margin-top: 20px;
 
-  .slick-slide {
+  .swiper-slide {
     text-align: center;
   }
 `;
 
-const TextSlide = styled.div`
+const TextSlide = styled(SwiperSlide)`
   padding: 20px;
 `;
 
@@ -40,17 +40,24 @@ const EmptyContainer = styled.div`
     flex: 1;
 `;
 
-const Home = () => {
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
+const Image = styled.img`
+    width: 100%;
+    height: auto;
+`;
+
+const NewSection = styled(Section)`
+    background-image: url('banner-2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+`;
+
+
+const Home = () => {
     return (
         <div>
+
             <Section>
                 <Content>
                     <h2>COMEÇAR A TREINAR NA <br />
@@ -60,7 +67,18 @@ const Home = () => {
                 <EmptyContainer />
             </Section>
 
-            <TextSlider {...settings}>
+            <TextSlider
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false
+                }}
+                pagination={{
+                    clickable: true
+                }}
+                loop={true}
+            >
                 <TextSlide>
                     <h3>Slide 1</h3>
                     <p>Texto do slide 1</p>
@@ -75,6 +93,17 @@ const Home = () => {
                 </TextSlide>
             </TextSlider>
 
+            
+            <div>
+            <NewSection>
+                <Content>
+                    <Image src="url_da_imagem_1.jpg" alt="Imagem 1" />
+                </Content>
+                <Content>
+                    <Image src="url_da_imagem_2.jpg" alt="Imagem 2" />
+                </Content>
+            </NewSection>
+        </div>
         </div>
     );
 };
